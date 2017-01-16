@@ -25609,7 +25609,8 @@
 	    if (!('value' in this.props)) {
 	      value.seconds(0);
 	      var minutes = value.minutes();
-	      minutes -= minutes % 15;
+	      var FRACTION = 15;
+	      minutes = FRACTION * Math.round(minutes / FRACTION);
 	      value.minutes(minutes);
 	      this.setState({
 	        value: value
