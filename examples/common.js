@@ -25607,6 +25607,10 @@
 	  },
 	  setValue: function setValue(value) {
 	    if (!('value' in this.props)) {
+	      value.seconds(0);
+	      var minutes = value.minutes();
+	      minutes -= minutes % 15;
+	      value.minutes(minutes);
 	      this.setState({
 	        value: value
 	      });
