@@ -30738,9 +30738,11 @@
 	    if (type === 'hour') {
 	      value.hour(itemValue);
 	    } else if (type === 'minute') {
-	      value.minute(itemValue);
+	      var FRACTION = 15;
+	      var minutes = FRACTION * Math.round(itemValue / FRACTION);
+	      value.minutes(minutes);
 	    } else {
-	      value.second(itemValue);
+	      value.second(0);
 	    }
 	    onChange(value);
 	  },
