@@ -30593,6 +30593,11 @@
 	          changedValue.hour(value.hour());
 	          changedValue.minute(value.minute());
 	          changedValue.second(value.second());
+	
+	          var FRACTION = 15;
+	          var minutes = FRACTION * Math.round(value.minute() / FRACTION);
+	          changedValue.minutes(minutes);
+	
 	          onChange(changedValue);
 	        }
 	      } else if (originalValue !== value) {
