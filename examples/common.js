@@ -30261,11 +30261,13 @@
 	
 	function noop() {}
 	
-	function generateOptions(length, disabledOptions, hideDisabledOptions, delta) {
+	function generateOptions(length, disabledOptions, hideDisabledOptions, delta, start, end) {
 	  var arr = [];
 	  if (!delta) delta = 1;
+	  if (!start) start = 0;
+	  if (!end) end = length;
 	
-	  for (var value = 0; value < length; value += delta) {
+	  for (var value = start; value < end; value += delta) {
 	    if (!disabledOptions || disabledOptions.indexOf(value) < 0 || !hideDisabledOptions) {
 	      arr.push(value);
 	    }
@@ -30364,7 +30366,7 @@
 	    var disabledHourOptions = disabledHours();
 	    var disabledMinuteOptions = disabledMinutes(value ? value.hour() : null);
 	    var disabledSecondOptions = disabledSeconds(value ? value.hour() : null, value ? value.minute() : null);
-	    var hourOptions = generateOptions(24, disabledHourOptions, hideDisabledOptions);
+	    var hourOptions = generateOptions(24, disabledHourOptions, hideDisabledOptions, 1, 6);
 	    var minuteOptions = generateOptions(60, disabledMinuteOptions, hideDisabledOptions, 15);
 	    var secondOptions = generateOptions(60, disabledSecondOptions, hideDisabledOptions);
 	
