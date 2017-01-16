@@ -11,23 +11,23 @@ webpackJsonp([0],[
 
 	'use strict';
 	
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"rc-time-picker/assets/index.less\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	__webpack_require__(2);
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(3);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(33);
+	var _reactDom = __webpack_require__(34);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _moment = __webpack_require__(179);
+	var _moment = __webpack_require__(180);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _rcTimePicker = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"rc-time-picker\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _rcTimePicker15Minutes = __webpack_require__(181);
 	
-	var _rcTimePicker2 = _interopRequireDefault(_rcTimePicker);
+	var _rcTimePicker15Minutes2 = _interopRequireDefault(_rcTimePicker15Minutes);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -70,7 +70,7 @@ webpackJsonp([0],[
 	  return [h + m % 60];
 	}
 	
-	_reactDom2.default.render(_react2.default.createElement(_rcTimePicker2.default, {
+	_reactDom2.default.render(_react2.default.createElement(_rcTimePicker15Minutes2.default, {
 	  showSecond: showSecond,
 	  defaultValue: now,
 	  className: 'xxx',
