@@ -30382,7 +30382,7 @@
 	    var disabledHourOptions = disabledHours();
 	    var disabledMinuteOptions = disabledMinutes(value ? value.hour() : null);
 	    var disabledSecondOptions = disabledSeconds(value ? value.hour() : null, value ? value.minute() : null);
-	    var hourOptions = generateOptions(12, disabledHourOptions, hideDisabledOptions, 1);
+	    var hourOptions = generateOptions(12, disabledHourOptions, hideDisabledOptions, 1, 1);
 	    var minuteOptions = generateOptions(60, disabledMinuteOptions, hideDisabledOptions, 15);
 	    var secondOptions = generateOptions(60, disabledSecondOptions, hideDisabledOptions);
 	    var ampmOptions = ['am', 'pm'];
@@ -30710,9 +30710,10 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var formatOption = function formatOption(option, disabledOptions) {
+	var formatOption = function formatOption(option, disabledOptions, type) {
 	  var value = '' + option;
-	  if (option < 10) {
+	
+	  if (type != 'hour' && option < 10) {
 	    value = '0' + option;
 	  }
 	
@@ -30788,7 +30789,7 @@
 	    return _react2.default.createElement(_Select2.default, {
 	      prefixCls: prefixCls,
 	      options: hourOptions.map(function (option) {
-	        return formatOption(option, disabledOptions);
+	        return formatOption(option, disabledOptions, 'hour');
 	      }),
 	      selectedIndex: hourOptions.indexOf(hour),
 	      type: 'hour',
