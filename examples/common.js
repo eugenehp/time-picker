@@ -30758,7 +30758,7 @@
 	
 	    var value = (this.props.value || defaultOpenValue).clone();
 	    if (type === 'hour') {
-	      var hours = itemValue;
+	      var hours = parseInt(itemValue);
 	      var ampm = value.format('a');
 	
 	      console.log('hours before', hours, ampm);
