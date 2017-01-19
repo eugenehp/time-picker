@@ -30761,7 +30761,11 @@
 	      var hours = itemValue;
 	      var ampm = value.format('a');
 	
+	      console.log('hours before', hours, ampm);
+	
 	      if (ampm === 'pm') hours += 12;
+	
+	      console.log('hours after', hours);
 	
 	      value.hours(hours);
 	    } else if (type === 'minute') {
@@ -30776,7 +30780,7 @@
 	
 	      value.hours(_hours);
 	    }
-	    //    console.log('onItemChange', { itemValue, value });
+	    console.log('onItemChange', { itemValue: itemValue, value: value });
 	    onChange(value);
 	  },
 	  onEnterSelectPanel: function onEnterSelectPanel(range) {
