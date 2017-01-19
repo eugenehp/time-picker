@@ -25547,6 +25547,7 @@
 	      showHour: true,
 	      showMinute: true,
 	      showSecond: true,
+	      showAMPM: true,
 	      disabledHours: noop,
 	      disabledMinutes: noop,
 	      disabledSeconds: noop,
@@ -25623,14 +25624,19 @@
 	        format = _props2.format,
 	        showHour = _props2.showHour,
 	        showMinute = _props2.showMinute,
-	        showSecond = _props2.showSecond;
+	        showSecond = _props2.showSecond,
+	        showAMPM = _props2.showAMPM;
 	
 	    if (format) {
 	      return format;
 	    }
-	    return [showHour ? 'HH' : '', showMinute ? 'mm' : '', showSecond ? 'ss' : ''].filter(function (item) {
+	    var result = [showHour ? 'HH' : '', showMinute ? 'mm' : '', showSecond ? 'ss' : ''].filter(function (item) {
 	      return !!item;
 	    }).join(':');
+	
+	    if (showAMPM) result += ' a';
+	
+	    return result;
 	  },
 	  getPanelElement: function getPanelElement() {
 	    var _props3 = this.props,
@@ -30301,6 +30307,7 @@
 	    showHour: _react.PropTypes.bool,
 	    showMinute: _react.PropTypes.bool,
 	    showSecond: _react.PropTypes.bool,
+	    showAMPM: _react.PropTypes.bool,
 	    onClear: _react.PropTypes.func,
 	    addon: _react.PropTypes.func
 	  },
@@ -30359,6 +30366,7 @@
 	        showHour = _props.showHour,
 	        showMinute = _props.showMinute,
 	        showSecond = _props.showSecond,
+	        showAMPM = _props.showAMPM,
 	        format = _props.format,
 	        defaultOpenValue = _props.defaultOpenValue,
 	        clearText = _props.clearText,
@@ -30374,6 +30382,7 @@
 	    var hourOptions = generateOptions(24, disabledHourOptions, hideDisabledOptions, 1, 6);
 	    var minuteOptions = generateOptions(60, disabledMinuteOptions, hideDisabledOptions, 15);
 	    var secondOptions = generateOptions(60, disabledSecondOptions, hideDisabledOptions);
+	    var ampmOptions = ['am', 'pm'];
 	
 	    return _react2.default.createElement(
 	      'div',
@@ -30406,9 +30415,11 @@
 	        showHour: showHour,
 	        showMinute: showMinute,
 	        showSecond: showSecond,
+	        showAMPM: showAMPM,
 	        hourOptions: hourOptions,
 	        minuteOptions: minuteOptions,
 	        secondOptions: secondOptions,
+	        ampmOptions: ampmOptions,
 	        disabledHours: disabledHours,
 	        disabledMinutes: disabledMinutes,
 	        disabledSeconds: disabledSeconds,
@@ -30725,9 +30736,11 @@
 	    showHour: _react.PropTypes.bool,
 	    showMinute: _react.PropTypes.bool,
 	    showSecond: _react.PropTypes.bool,
+	    showAMPM: _react.PropTypes.bool,
 	    hourOptions: _react.PropTypes.array,
 	    minuteOptions: _react.PropTypes.array,
 	    secondOptions: _react.PropTypes.array,
+	    ampmOptions: _react.PropTypes.array,
 	    disabledHours: _react.PropTypes.func,
 	    disabledMinutes: _react.PropTypes.func,
 	    disabledSeconds: _react.PropTypes.func,
@@ -30827,10 +30840,33 @@
 	      onMouseEnter: this.onEnterSelectPanel.bind(this, 'second')
 	    });
 	  },
-	  render: function render() {
+	  getAMPMSelect: function getAMPMSelect(ampm) {
 	    var _props5 = this.props,
 	        prefixCls = _props5.prefixCls,
+	        ampmOptions = _props5.ampmOptions,
+	        showAMPM = _props5.showAMPM,
 	        defaultOpenValue = _props5.defaultOpenValue;
+	
+	    if (!showSecond) {
+	      return null;
+	    }
+	    var value = this.props.value || defaultOpenValue;
+	
+	    return _react2.default.createElement(_Select2.default, {
+	      prefixCls: prefixCls,
+	      options: secondOptions.map(function (option) {
+	        return formatOption(option, disabledOptions);
+	      }),
+	      selectedIndex: secondOptions.indexOf(second),
+	      type: 'second',
+	      onSelect: this.onItemChange,
+	      onMouseEnter: this.onEnterSelectPanel.bind(this, 'second')
+	    });
+	  },
+	  render: function render() {
+	    var _props6 = this.props,
+	        prefixCls = _props6.prefixCls,
+	        defaultOpenValue = _props6.defaultOpenValue;
 	
 	    var value = this.props.value || defaultOpenValue;
 	    return _react2.default.createElement(
@@ -30838,7 +30874,8 @@
 	      { className: prefixCls + '-combobox' },
 	      this.getHourSelect(value.hour()),
 	      this.getMinuteSelect(value.minute()),
-	      this.getSecondSelect(value.second())
+	      this.getSecondSelect(value.second()),
+	      this.getAMPMSelect(value.format('a'))
 	    );
 	  }
 	});
