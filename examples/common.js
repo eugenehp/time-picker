@@ -30766,7 +30766,11 @@
 	    } else if (type === 'second') {
 	      value.second(0);
 	    } else {
-	      console.log('onItemChange', { itemValue: itemValue, value: value });
+	      console.log('onItemChange before', { itemValue: itemValue, value: value });
+	      var hours = value.hours();
+	      if (itemValue == 'pm') hours += 12;else hours -= 12;
+	
+	      value.hours(hours);
 	    }
 	    console.log('onItemChange', { itemValue: itemValue, value: value });
 	    onChange(value);
