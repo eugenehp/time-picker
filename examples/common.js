@@ -30981,7 +30981,7 @@
 	      var cls = (0, _classnames3.default)((_classnames = {}, (0, _defineProperty3.default)(_classnames, prefixCls + '-select-option-selected', selectedIndex === index), (0, _defineProperty3.default)(_classnames, prefixCls + '-select-option-disabled', item.disabled), _classnames));
 	      var onclick = null;
 	      if (!item.disabled) {
-	        onclick = _this.onSelect.bind(_this, +item.value);
+	        onclick = _this.onSelect.bind(_this, item.value);
 	      }
 	      return _react2.default.createElement(
 	        'li',
