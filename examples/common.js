@@ -30757,20 +30757,20 @@
 	        defaultOpenValue = _props.defaultOpenValue;
 	
 	    var value = (this.props.value || defaultOpenValue).clone();
-	    if (type === 'hour' || type === 'ampm') {
+	    if (type === 'hour') {
 	      var hours = itemValue;
 	      var ampm = value.format('a');
 	
 	      if (ampm === 'pm') hours += 12;
 	
-	      value.hour(hours);
+	      value.hours(hours);
 	    } else if (type === 'minute') {
 	      var FRACTION = 15;
 	      var minutes = FRACTION * Math.round(itemValue / FRACTION);
 	      value.minutes(minutes);
 	    } else if (type === 'second') {
 	      value.second(0);
-	    } else {
+	    } else if (type === 'ampm') {
 	      var _hours = value.hours();
 	      if (itemValue === 'pm') _hours += 12;else _hours -= 12;
 	
@@ -30856,7 +30856,7 @@
 	    });
 	  },
 	  getAMPMSelect: function getAMPMSelect(ampm) {
-	    console.log('getAMPMSelect', ampm);
+	    //    console.log('getAMPMSelect', ampm);
 	    var _props5 = this.props,
 	        prefixCls = _props5.prefixCls,
 	        ampmOptions = _props5.ampmOptions,
