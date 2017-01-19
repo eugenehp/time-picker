@@ -30759,8 +30759,10 @@
 	      var FRACTION = 15;
 	      var minutes = FRACTION * Math.round(itemValue / FRACTION);
 	      value.minutes(minutes);
-	    } else {
+	    } else if (type === 'second') {
 	      value.second(0);
+	    } else {
+	      console.log('onItemChange', { itemValue: itemValue, value: value });
 	    }
 	    onChange(value);
 	  },
@@ -30847,7 +30849,7 @@
 	        showAMPM = _props5.showAMPM,
 	        defaultOpenValue = _props5.defaultOpenValue;
 	
-	    if (!showSecond) {
+	    if (!showAMPM) {
 	      return null;
 	    }
 	    var value = this.props.value || defaultOpenValue;
@@ -30857,10 +30859,10 @@
 	      options: secondOptions.map(function (option) {
 	        return formatOption(option, disabledOptions);
 	      }),
-	      selectedIndex: secondOptions.indexOf(second),
-	      type: 'second',
+	      selectedIndex: secondOptions.indexOf(ampm),
+	      type: 'ampm',
 	      onSelect: this.onItemChange,
-	      onMouseEnter: this.onEnterSelectPanel.bind(this, 'second')
+	      onMouseEnter: this.onEnterSelectPanel.bind(this, 'ampm')
 	    });
 	  },
 	  render: function render() {
