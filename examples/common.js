@@ -30757,8 +30757,13 @@
 	        defaultOpenValue = _props.defaultOpenValue;
 	
 	    var value = (this.props.value || defaultOpenValue).clone();
-	    if (type === 'hour') {
-	      value.hour(itemValue);
+	    if (type === 'hour' || type === 'ampm') {
+	      var hours = itemValue;
+	      var ampm = value.format('a');
+	
+	      if (ampm === 'pm') hours += 12;
+	
+	      value.hour(hours);
 	    } else if (type === 'minute') {
 	      var FRACTION = 15;
 	      var minutes = FRACTION * Math.round(itemValue / FRACTION);
@@ -30766,11 +30771,10 @@
 	    } else if (type === 'second') {
 	      value.second(0);
 	    } else {
-	      //      console.log('onItemChange before', { itemValue, value });
-	      var hours = value.hours();
-	      if (itemValue == 'pm') hours += 12;else hours -= 12;
+	      var _hours = value.hours();
+	      if (itemValue === 'pm') _hours += 12;else _hours -= 12;
 	
-	      value.hours(hours);
+	      value.hours(_hours);
 	    }
 	    //    console.log('onItemChange', { itemValue, value });
 	    onChange(value);
