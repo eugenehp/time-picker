@@ -30852,6 +30852,7 @@
 	    });
 	  },
 	  getAMPMSelect: function getAMPMSelect(ampm) {
+	    console.log('getAMPMSelect', ampm);
 	    var _props5 = this.props,
 	        prefixCls = _props5.prefixCls,
 	        ampmOptions = _props5.ampmOptions,
