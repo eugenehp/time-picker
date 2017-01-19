@@ -30766,13 +30766,13 @@
 	    } else if (type === 'second') {
 	      value.second(0);
 	    } else {
-	      console.log('onItemChange before', { itemValue: itemValue, value: value });
+	      //      console.log('onItemChange before', { itemValue, value });
 	      var hours = value.hours();
 	      if (itemValue == 'pm') hours += 12;else hours -= 12;
 	
 	      value.hours(hours);
 	    }
-	    console.log('onItemChange', { itemValue: itemValue, value: value });
+	    //    console.log('onItemChange', { itemValue, value });
 	    onChange(value);
 	  },
 	  onEnterSelectPanel: function onEnterSelectPanel(range) {
