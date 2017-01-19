@@ -30382,7 +30382,7 @@
 	    var disabledHourOptions = disabledHours();
 	    var disabledMinuteOptions = disabledMinutes(value ? value.hour() : null);
 	    var disabledSecondOptions = disabledSeconds(value ? value.hour() : null, value ? value.minute() : null);
-	    var hourOptions = generateOptions(24, disabledHourOptions, hideDisabledOptions, 1, 6);
+	    var hourOptions = generateOptions(12, disabledHourOptions, hideDisabledOptions, 1);
 	    var minuteOptions = generateOptions(60, disabledMinuteOptions, hideDisabledOptions, 15);
 	    var secondOptions = generateOptions(60, disabledSecondOptions, hideDisabledOptions);
 	    var ampmOptions = ['am', 'pm'];
@@ -30767,6 +30767,7 @@
 	    } else {
 	      console.log('onItemChange', { itemValue: itemValue, value: value });
 	    }
+	    console.log('onItemChange', { itemValue: itemValue, value: value });
 	    onChange(value);
 	  },
 	  onEnterSelectPanel: function onEnterSelectPanel(range) {
