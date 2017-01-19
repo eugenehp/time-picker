@@ -25650,6 +25650,7 @@
 	        showHour = _props3.showHour,
 	        showMinute = _props3.showMinute,
 	        showSecond = _props3.showSecond,
+	        showAMPM = _props3.showAMPM,
 	        defaultOpenValue = _props3.defaultOpenValue,
 	        clearText = _props3.clearText,
 	        addon = _props3.addon;
@@ -25665,6 +25666,7 @@
 	      showHour: showHour,
 	      showMinute: showMinute,
 	      showSecond: showSecond,
+	      showAMPM: showAMPM,
 	      onEsc: this.onEsc,
 	      allowEmpty: allowEmpty,
 	      format: this.getFormat(),
@@ -25708,13 +25710,14 @@
 	        showHour = _props5.showHour,
 	        showMinute = _props5.showMinute,
 	        showSecond = _props5.showSecond,
+	        showAMPM = _props5.showAMPM,
 	        getPopupContainer = _props5.getPopupContainer;
 	    var _state = this.state,
 	        open = _state.open,
 	        value = _state.value;
 	
 	    var popupClassName = void 0;
-	    if (!showHour || !showMinute || !showSecond) {
+	    if (!showHour || !showMinute || !showSecond || !showAMPM) {
 	      popupClassName = prefixCls + '-panel-narrow';
 	    }
 	    return _react2.default.createElement(
@@ -30853,13 +30856,14 @@
 	      return null;
 	    }
 	    var value = this.props.value || defaultOpenValue;
+	    var disabledOptions = [];
 	
 	    return _react2.default.createElement(_Select2.default, {
 	      prefixCls: prefixCls,
-	      options: secondOptions.map(function (option) {
+	      options: ampmOptions.map(function (option) {
 	        return formatOption(option, disabledOptions);
 	      }),
-	      selectedIndex: secondOptions.indexOf(ampm),
+	      selectedIndex: ampmOptions.indexOf(ampm),
 	      type: 'ampm',
 	      onSelect: this.onItemChange,
 	      onMouseEnter: this.onEnterSelectPanel.bind(this, 'ampm')
