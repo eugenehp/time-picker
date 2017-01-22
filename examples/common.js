@@ -30801,12 +30801,14 @@
 	      return null;
 	    }
 	    var disabledOptions = disabledHours();
+	    var options = hourOptions.map(function (option) {
+	      return formatOption(option, disabledOptions, 'hour');
+	    });
+	    console.log('getHourSelect', options, hourOptions.indexOf(hour), hour);
 	
 	    return _react2.default.createElement(_Select2.default, {
 	      prefixCls: prefixCls,
-	      options: hourOptions.map(function (option) {
-	        return formatOption(option, disabledOptions, 'hour');
-	      }),
+	      options: options,
 	      selectedIndex: hourOptions.indexOf(hour),
 	      type: 'hour',
 	      onSelect: this.onItemChange,
