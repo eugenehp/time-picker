@@ -30804,12 +30804,13 @@
 	    var options = hourOptions.map(function (option) {
 	      return formatOption(option, disabledOptions, 'hour');
 	    });
-	    console.log('getHourSelect', options, hourOptions.indexOf(hour), hour);
+	    var selectedIndex = hour > 12 ? hourOptions.indexOf(hour - 12) : hourOptions.indexOf(hour);
+	    //    console.log('getHourSelect', options, hourOptions.indexOf(hour), hour);
 	
 	    return _react2.default.createElement(_Select2.default, {
 	      prefixCls: prefixCls,
 	      options: options,
-	      selectedIndex: hourOptions.indexOf(hour),
+	      selectedIndex: selectedIndex,
 	      type: 'hour',
 	      onSelect: this.onItemChange,
 	      onMouseEnter: this.onEnterSelectPanel.bind(this, 'hour')
