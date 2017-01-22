@@ -30776,7 +30776,11 @@
 	      value.second(0);
 	    } else if (type === 'ampm') {
 	      var _hours = value.hours();
-	      if (itemValue === 'pm') _hours += 12;else _hours -= 12;
+	      var _ampm = value.format('a');
+	
+	      if (_ampm != itemValue) {
+	        if (itemValue === 'pm') _hours += 12;else _hours -= 12;
+	      }
 	
 	      value.hours(_hours);
 	    }
